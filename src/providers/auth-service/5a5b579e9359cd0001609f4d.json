@@ -1,0 +1,15 @@
+{
+	"updatedAt":"2018-01-22T19:46:16.402Z",
+	"createdAt":"2018-01-14T13:14:06.898Z",
+	"latitude":44.061275,
+	"longitude":6.854417,
+	"condition":"- Equipement à prévoir : Chaussures fermées, maillot de bain et serviette - Age minimum : 6 - Activité soumise aux conditions météo - Ville la plus proche : Gap (39 km) , Briançon (47 km) - Raft de 4 ou 8 places - Equipements fournis: casque, gilet, combinaison, pagaie.",
+	"photo":"rafting.jpg",
+	"description":"Vous aurez l’occasion de naviguer sur la plus longue rivière provençale et partager un moment convivial en famille ou entre amis. A bord d’un bateau pneumatique, vous profiterez de 2 parcours exceptionnels au choix et d’une vue splendide sur la région. ",
+	"prix":56,
+	"type_act":"Aquatique",
+	"libelle":"Rafting",
+	"visible_home":false,
+	"visible":false,
+	"en_promo":false
+}

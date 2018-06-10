@@ -1,56 +1,65 @@
 page-login {
-  .login-content {
-    background: #848484;
- 
-    .logo-row {
-      padding-top: 50px;
-      padding-bottom: 20px;
-    }
- 
-    .login-box {
-      background: #E6E6E6;
-      padding: 20px 20px 0px 20px;
-      margin-top: 30px;
-    }
- 
-    ion-row {
-       align-items: center;
-       text-align: center;
-     }
-    .rememberMe{
-       background: #E6E6E6;
-    }
-    .box {
-        border-radius: 30px !important;
-        padding-left: 30px !important;
-        font-size: 1em;
-        margin-bottom: 10px;
-        border: 1px solid #ffffff;
-        border-bottom: 0px !important;
-        box-shadow: none !important;
-        border-bottom-color: silver !important;
-     }
- 
-     .signup-col {
-       margin: 0px 16px 0px 16px;
-       padding-bottom: 20px;
-     }
-     .createAccount {
+  .login-content{
+    background:#F7F2E0;
 
-        color: #15A6DC;
-         display: block;
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
 
-     }
-     .submit-btn {
-       background: #625757;
-       border-radius: 30px !important;
-       border: 1px solid #ffffff;
-       color : #fff;
-     }
+    .logo{
+      padding-top:30px;
+      padding-bottom:15px;
+    }
+    ion-row{
+      align-items: center;
+      text-align: center;
+    }
+    
+    h1{
+      margin-bottom:20px;
+      font-family:'stratos','arial','helvetica','sans-serif';
+    }
+    
+    .formulaire_login{
 
+      background-color:#F7F2E0;
+      padding:5px 20px 0px 20px;
+    }
+
+    .champ_saisie{
+      display:block;
+      width:100%;
+      margin-bottom:15px;
+      padding-top:4px;
+      padding-left:0;
+      background-color:#F7F2E0;
+
+      font-family:'stratos-light','arial','helvetica','sans-serif';
+      font-size:16px;
+      line-height:16px;
+    }
+    
+    .champ_saisie ion-label{
+      padding-left:15px;
+    }
+    
+    .champ_saisie .item-inner{
+      border:none !important;
+        box-shadow:none !important;
+    }
+    
+    .cta_rouge{
+      margin-top:0 !important;
+      background-color: #30b49a !important;
+    }
+    
+
+    .non_abonne_btn{
+      display:block;
+      width:100%;
+      margin-bottom:15px;
+      color:#59536d !important;
+      font-family:'stratos','arial','helvetica','sans-serif';
+      font-size:16px;
+      text-decoration:none;
+      margin-top: 25px;
+    }
   }
- 
 }

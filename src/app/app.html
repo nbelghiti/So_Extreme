@@ -1,25 +1,21 @@
-<ion-menu [content]="content">
+<ion-menu class="content" [content]="content" type="overlay" >
   <ion-header>
-    <ion-toolbar color="danger">
+    <ion-toolbar color="green">
       <ion-title>Menu</ion-title>
     </ion-toolbar>
   </ion-header>
-
   <ion-content>
+    
     <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        <ion-icon name="{{p.icon}}">&nbsp;&nbsp;&nbsp;&nbsp;</ion-icon> {{p.title}}
-      </button>
-      <button ion-item menuClose detail-none>
-        <ion-icon name="close" ios="ios-close-circle-outline" md="ios-close-circle-outline">
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Close Menu
-        </ion-icon> 
-      </button>
-
+      <button ion-item icon-only (click)="getPageHome()" menuClose>Home</button>
+      <button ion-item icon-only (click)="getPageCompte()" menuClose>Mon compte</button>
+      <button ion-item icon-only (click)="getPageReservations()" menuClose>Mes Réservations</button>
+      <button ion-item icon-only (click)="getPageGroupe()" menuClose>Groupes</button>
+      <button ion-item icon-only (click)="getPageContact()" menuClose>Contactez-Nous</button>
     </ion-list>
   </ion-content>
-
 </ion-menu>
 
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+
 <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

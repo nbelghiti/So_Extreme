@@ -1,27 +1,39 @@
-<ion-header>
-  <ion-navbar color="danger">
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
+<ion-header >
+  <ion-navbar color="green" >
+    <button  ion-button menuToggle>
+      <ion-icon name="menu" ></ion-icon>
     </button>
-    <ion-title>SO_Extreme</ion-title>
-      <ion-buttons end>
-    <button ion-button (click)="logout()">
+    <ion-title align="center">Home</ion-title>
+  <ion-buttons end>   
+    <button ion-button (click)="seDeconnecter()">
       <ion-icon name="log-out"></ion-icon>
     </button>
   </ion-buttons>
   </ion-navbar>
-
 </ion-header>
+<ion-content padding class="list" style="background-color: #fffafa;">
 
- 
-<ion-content class="home" padding>
-  <h3>Welcome inside, {{username}}!</h3>
-  <p>Il y aura forcément une activité parmi toutes celles que nous vous proposons ! pour vous...: </p>
-  <ul>
-    <li>Chute libre</li>
-    <li>Saut à l'élastique</li>
-    <li>Escalade</li>
-    <li>Canoë rivières</li>
-    <li>Parapente</li>
-  </ul>
+
+
+
+<ion-card *ngFor="let activite of datas">
+  <img (click)="getPageActivite(activite._id)" src="http://54.36.190.213:4200/assets/img/{{activite.photo}}"/>
+  <ion-card-content>
+    <ion-card-title>
+      {{ activite.libelle }} 
+      </ion-card-title>
+    <p>
+      <ion-item>
+          Nombre de réservations  
+          <ion-badge item-end>260</ion-badge>
+        </ion-item>
+        <ion-item>
+          Prix 
+          <ion-badge item-end>{{activite.prix}} &euro;</ion-badge>
+      </ion-item>   
+    </p>
+  </ion-card-content>
+</ion-card>
+
+
 </ion-content>

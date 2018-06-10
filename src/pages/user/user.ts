@@ -1,40 +1,38 @@
 import { Component } from '@angular/core';
-import {  NavController, NavParams } from 'ionic-angular';
-import { Rest } from '../../providers/rest/rest';
-import { AuthService } from '../../providers/auth-service/auth-service';
+import {  NavController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
-
-/**
- * Generated class for the UserPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { AuthService } from '../../providers/auth-service/auth-service';
 
 @Component({
   selector: 'page-user',
   templateUrl: 'user.html',
 })
+
 export class UserPage {
-	users: any;
-	constructor(public rest: Rest, public navCtrl: NavController, public navParams: NavParams, private auth: AuthService) {
-		this.getUsers();
+	datas = {
+		nom		: "",
+		vile 	: ""
+	};
+	erreur : any;
+	dato:any;
+
+	constructor(private auth: AuthService, public navCtrl: NavController) {
+		
 	}
 
 	ionViewDidLoad() {
-		//console.log('ionViewDidLoad UserPage');
+		this.getUsers();
 	}
+
 	getUsers() {
-	  this.rest.getUsers()
-	  .then(data => {
-	    this.users = data;
-	  });
+		
 	}
-	public logout() {
-	  window.localStorage.removeItem('email');
-	  window.localStorage.removeItem('password');
-	this.auth.logout().subscribe(succ => {
-	  this.navCtrl.setRoot(LoginPage)
-	});
+
+	seDeconnecter() {
+	  	window.localStorage.removeItem('email');
+	  	window.localStorage.removeItem('password');
+		this.auth.seDeconnecter().subscribe(succ => {
+	  		this.navCtrl.setRoot(LoginPage)
+		});
 	}
 }

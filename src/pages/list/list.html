@@ -1,29 +1,38 @@
 <ion-header>
-  <ion-navbar color="danger" >
+  <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>List</ion-title>
-    <ion-buttons end>
-      <button ion-button (click)="logout()">
-        <ion-icon name="log-out"></ion-icon>
-      </button>
-    </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
 <ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content loadingSpinner="bubbles" refreshingText="Actualiser la page ..."></ion-refresher-content>
+  </ion-refresher>
+
   <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-icon [name]="item.icon" item-left></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-right>
-        {{item.note}}
-      </div>
-    </button>
+    <ion-item-sliding  *ngFor="let item of items" (click)="itemTapped($event, item)">
+      <ion-item class="list">  
+        <ion-icon [name]="item.icon" item-start></ion-icon>
+          {{item.title}}
+        <div class="item-note" item-end> {{item.note}} </div>
+      </ion-item>     
+      <ion-item-options side="left">
+        <button ion-button (click)="favorite(item)">Favorite</button>
+        <button ion-button color="danger" (click)="share(item)">Share</button>
+      </ion-item-options>
+      <ion-item-options side="right">
+        <button ion-button (click)="unread(item)">Unread</button>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
-  <div *ngIf="selectedItem" padding>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Chargement de plus de données..."></ion-infinite-scroll-content>
+  </ion-infinite-scroll>    
+  <!--div *ngIf="selectedItem" padding>
     You navigated here from <b>{{selectedItem.title}}</b>
-  </div>
+  </div-->
+
 </ion-content>

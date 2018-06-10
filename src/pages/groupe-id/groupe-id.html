@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar color="green">
+    <ion-row>
+      <ion-col col-2>
+      <ion-buttons>
+        <button ion-button class="close_depeche" (click)="backGroupePage()">
+          <ion-icon name="md-arrow-back" menuClose ></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-col>
+    <ion-col col-8>
+        <ion-title align="center" class="title" >{{nom}}</ion-title>
+    </ion-col>
+    <ion-col col-2>    
+      <ion-buttons>
+        <button ion-button class="temps_lecture" (click)="ajouterAmi()">
+          <ion-icon name="ios-add-outline"></ion-icon>
+        </button>
+      </ion-buttons>
+      </ion-col>  
+      </ion-row>    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding> 
+  <ion-item>
+       <h2>Amis :</h2>
+       <hr>
+  </ion-item>
+  <ion-list *ngIf="nbre_client!==0">
+    <ion-item-sliding *ngFor="let ami of amis">
+      <ion-item>
+        <h2>{{ami.nom}}</h2>
+        <p></p>
+      </ion-item>
+      <ion-item-options class="swift_droit" side="right">
+        <button ion-button class="btn" (click)="supprimerAmi(ami._id)">
+          <ion-icon name="ios-trash-outline" class="delete" ></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+    <ion-item>
+      <p>Nombre d'ami(e)s</p>
+      <ion-badge item-end>{{nbr_ami}}</ion-badge>
+    </ion-item>
+</ion-content>

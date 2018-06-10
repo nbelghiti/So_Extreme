@@ -1,0 +1,29 @@
+<ion-header >
+  <ion-navbar color="green" >
+    <button ion-button menuToggle>
+      <ion-icon name="menu" ></ion-icon>
+    </button>
+    <ion-title align="center">Contactez-nous</ion-title>
+  <ion-buttons end>   
+    <button ion-button (click)="seDeconnecter()">
+      <ion-icon name="log-out"></ion-icon>
+    </button>
+  </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content  class="login-content">
+  <h2>Contactez-nous :  </h2>
+    <form (ngSubmit)="enoyerMessage()" #registerForm="ngForm">
+      <ion-item>
+        <ion-input placeholder="Vote sujet" type="text" [(ngModel)]="todo.title" name="title" [ngModelOptions]="{standalone: true}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-textarea [(ngModel)]="todo.message" placeholder="Vote message" name="description" [ngModelOptions]="{standalone: true}"></ion-textarea>
+      </ion-item>
+      <button ion-button class="btn" full type="submit" [disabled]="!registerForm.form.valid">
+            Envoyer
+          </button>
+    </form>
+</ion-content>

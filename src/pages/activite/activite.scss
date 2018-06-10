@@ -1,0 +1,64 @@
+page-activite {
+ .activite P {
+ 	    text-align: justify
+	}
+    ion-lis h3 {
+
+        margin-top: 30px;
+    }
+	.btn_valider{
+      background-color: #30b49a !important;
+    }
+    .photo{
+    	padding-top: 20px !important;
+    }
+
+    	h2 {
+        margin-bottom:10px !important;
+        padding-bottom:5px;
+        border-bottom:1px solid #999;
+        color:#59536d;
+        font-family:'stratos-medium','arial','helvetica','sans-serif';
+        font-size:24px !important;
+        text-align:center;
+        text-transform:uppercase;
+	}
+	.btn {
+		color: white;
+		background-color: red
+	}
+    .delete {
+    	font-style: bold;
+        font-size: 30px;
+        margin-right: 15px;
+        margin-left: 15px;
+        margin-top: 10px;
+
+    }
+    .slide-photo{
+        height: auto;
+    }
+
+    ion-slide .slide-zoom{
+        color:#999999;
+        font-family:'stratos-medium','arial','helvetica','sans-serif';
+        font-size:14px !important;
+    
+        text-align:left;
+        white-space:initial;
+    }
+    
+    ion-slide .slide-zoom img{
+        width: 100%;
+        height: 350px;
+    }
+
+  #map {
+    height: 60%;
+    width:  100%;
+  }
+  .footer{
+    margin-top: 30px;
+  }
+    
+}

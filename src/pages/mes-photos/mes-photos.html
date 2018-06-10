@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar color="green" >
+    <button ion-button menuToggle>
+      <ion-icon name="menu" ></ion-icon>
+    </button>
+    <ion-title align="center">mes Photos</ion-title>
+  <ion-buttons end>   
+    <button ion-button (click)="seDeconnecter()">
+      <ion-icon name="log-out"></ion-icon>
+    </button>
+  </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <form enctype="multipart/form-data"   #registerForm="ngForm" action="http://54.36.190.213:4040/photo/add" method="post" >
+    <ion-input clearInput  type="text" name="email" [(ngModel)]="fd.email" required></ion-input>
+        <input type="file" name="imgUploader"  (change)="fileUpload($event)"/>
+      <ion-row>
+        <ion-col col-12 class="no-padding" >
+          <button ion-button class="cta_rouge" full type="submit" name="submit" (click)="postPicture($event)"  [disabled]="!registerForm.form.valid">
+            Valider
+          </button>
+        </ion-col>
+      </ion-row>
+    </form>
+        <form id="frmUploader" enctype="multipart/form-data" action="/photo/add" method="post">
+      Email * <input type="text" name="email_cli"/><br>
+        <input type="file" name="imgUploader"/>
+        <input type="submit" name="submit" id="btnSubmit" value="Enregister" />
+    </form>
+  <!--ion-item>
+    <p>{{imageURI}}</p>
+    <button ion-button color="secondary" (click)="getImage()">Get Image</button>
+  </ion-item>
+  <ion-item>
+    <h4>Image Preview</h4>
+    <img src="{{imageFileName}}" *ngIf="imageFileName" alt="Ionic File" width="300" />
+  </ion-item>
+  <ion-item>
+    <button ion-button (click)="uploadFile()">Upload</button>
+  </ion-item-->
+</ion-content>

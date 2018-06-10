@@ -1,51 +1,58 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, LoadingController, Loading, IonicPage } from 'ionic-angular';
+import { NavController, AlertController, LoadingController, Loading, MenuController } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { HomePage } from '../home/home';
-import { RegisterPage } from '../register/register';
+import { Storage } from '@ionic/storage';
+import { CreercomptePage } from '../creercompte/creercompte';
 
-@IonicPage()
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  loading: Loading;
-  registerCredentials = { email: '', password: '', rememberMe: false};
+  registerCredentials = { email : '', password : '' };
+  datas       : any;
+  id_Client   : any;
+  loading     : Loading;
 
- 
-  constructor(private nav: NavController, private auth: AuthService, private alertCtrl: AlertController, private loadingCtrl: LoadingController) {
-  
+  constructor(public menu: MenuController, private nav: NavController, private auth: AuthService, private alertCtrl: AlertController, private loadingCtrl: LoadingController, private storage : Storage) {
+    this.menu.swipeEnable(false);
   }
- 
+  
+  setEmail(params) {
+    this.storage.set('email', {params});
+    console.log("email storage");
+  }
 
-  public createAccount() {
-    this.nav.push(RegisterPage);
+  setIdClient(params) {
+    this.storage.set('id_Client', {params});
+    console.log("id_Client storage");
   }
  
   public login() {
     this.showLoading()
-   // this.addLocalStorage()
-    this.auth.login(this.registerCredentials).subscribe(allowed => {
-      if (allowed) {        
-        this.nav.setRoot(HomePage);
-        if ( this.registerCredentials.rememberMe ) {  
-            window.localStorage['email'] = this.registerCredentials.email; 
-            window.localStorage['password'] = this.registerCredentials.password;
-          }
-    
-      } else {
-        this.showError("You entered invalid credentials !");
-      }
-    },
-      error => {
-        this.showError(error);
-      });
+    console.log(this.registerCredentials);
+    this.auth.login(this.registerCredentials).then((result) => {
+      this.loading.dismiss();
+        this.datas = result;
+        this.setEmail(this.registerCredentials.email );
+        this.setIdClient(this.datas._id);
+        this.nav.setRoot(HomePage, {
+          id : this.id_Client
+        });
+ 
+     
+    }, (error) => {
+      this.showError(error);
+      console.log(error);
+      this.loading.dismiss();
+      
+    });
   }
  
   showLoading() {
     this.loading = this.loadingCtrl.create({
-      content: 'Please wait...',
+      content: 'veuillez patienter...',
       dismissOnPageChange: true
     });
     this.loading.present();
@@ -55,10 +62,13 @@ export class LoginPage {
     this.loading.dismiss();
  
     let alert = this.alertCtrl.create({
-      title: 'identifiants invalide ',
-      subTitle: text,
+      title: "erreur d'authentification",
+      subTitle: 'identifiant incorrect ',
       buttons: ['OK']
     });
-    alert.present(prompt);
+    alert.present();
+  }
+  creerCompte(){
+    this.nav.setRoot(CreercomptePage);
   }
 }

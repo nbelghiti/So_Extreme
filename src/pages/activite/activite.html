@@ -1,0 +1,71 @@
+<ion-header >
+  <ion-navbar color="green" >
+    <button ion-button menuToggle>
+      <ion-icon name="menu" ></ion-icon>
+    </button>
+    <ion-title  align="center">Activité</ion-title>
+  <ion-buttons end>   
+    <button ion-button (click)="seDeconnecter()">
+      <ion-icon name="log-out"></ion-icon>
+    </button>
+  </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <img src="http://54.36.190.213:4200/assets/img/{{photo}}"/>
+  <h3 color="maron">{{libelle}}</h3>
+  <div class="activite">
+    <ion-item>
+      Nombre de réservations 
+      <ion-badge item-end>260</ion-badge><br>
+    </ion-item>
+    <ion-item>
+      Prix 
+      <ion-badge item-end>{{prix}} &euro;</ion-badge>
+    </ion-item><br>
+    <h2> Description :</h2>
+    <hr>
+    <p [innerHTML]="description | safe: 'html'"></p>
+    <h2>Condition :</h2>
+    <hr>
+    <p [innerHTML]="condition | safe: 'html'"></p> 
+  </div>
+
+  <h2>commentaire :</h2>  
+  <ion-list>
+    <ion-item-sliding *ngFor="let com of commentaires">
+        <ion-item *ngIf="com.id_act===activite_id">
+        <h3> {{ nom[com.id_client]}} :</h3>
+          <p > {{ com.texte }}</p>
+        </ion-item>
+        <ion-item-options *ngIf="com.id_client===id_client" class="swift_droit" side="right">
+          <button ion-button class="btn" (click)="supprimerComment(com._id)">
+            <ion-icon name="ios-trash-outline" class="delete" ></ion-icon>
+          </button>
+        </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <form *ngIf="statut" (ngSubmit)="enoyerCommentaire()" #registerForm="ngForm" novalidate>
+    <ion-item>
+      <ion-textarea placeholder="Commentaire..." [(ngModel)]="commentaire" name="description" [ngModelOptions]="{standalone: true}"></ion-textarea>
+    </ion-item>
+    <button ion-button class="btn_valider" full type="submit" [disabled]="!registerForm.form.valid">Envoyer</button>
+  </form>
+
+  <h2 class="photo">Photo : </h2>
+  <ion-slides class="slide-photo"  loop="true" pager>
+    <ion-slide *ngFor="let photo of photos" >
+      <img *ngIf="photo.id_activite===activite_id "  src="http://54.36.190.213:4200/assets/img/{{photo.nom_img}}"/>
+    </ion-slide>
+  </ion-slides>
+
+  <h2 class="photo">Localisation : </h2>
+
+    <div #map id="map"></div>
+    <div class="footer" >
+      <h1></h1>
+    </div>
+
+</ion-content>

@@ -1,44 +1,48 @@
 <ion-content class="login-content">
-  <ion-row class="logo-row">
-    <ion-col>
-      <img  width="150" height="150" src="./assets/images/icon.png"/>
+  <ion-row>
+    <ion-col col-12>
+      <img class="logo"  width="45%" src="http://54.36.190.213:4200/assets/img/Logo-essai3.png"/>
     </ion-col>
   </ion-row>
-  <div class="login-box">
+  <ion-row>
+    <ion-col col-12>
+      <h1>Identification</h1>
+    </ion-col>
+  </ion-row>
+  <div col-12 class="formulaire_login">
     <form (ngSubmit)="login()" #registerForm="ngForm" autocomplete="off">
       <ion-row>
-        <ion-col>
-          <ion-list inset>
-
-            <ion-item class="box">
-              <ion-label> <ion-icon name="person"></ion-icon></ion-label>
-              <ion-input clearInput  type="text" placeholder="Email : admin" name="email" [(ngModel)]="registerCredentials.email" required>
-              </ion-input>
-            </ion-item>
-            <ion-item class="box">>
-              <ion-label> <ion-icon name="ios-lock"></ion-icon></ion-label>
-              <ion-input type="password" placeholder="Password : 123" name="password" [(ngModel)]="registerCredentials.password" required>
-              </ion-input>
-            </ion-item>
-              <ion-item class="rememberMe">
-                <ion-label stacked-label>Remember Me</ion-label>
-                <ion-checkbox name="rememberMe" [(ngModel)]="registerCredentials.rememberMe" color="danger" ></ion-checkbox>
-              </ion-item>
-          </ion-list>
-
+        <ion-col col-12 class="no-padding">
+          <ion-item class="champ_saisie">
+            <ion-label>E-mail</ion-label>
+            <ion-input  type="text" name="email" [(ngModel)]="registerCredentials.email" required>
+            </ion-input>
+          </ion-item>
+          <ion-item class="champ_saisie">
+            <ion-label>Mot de passe</ion-label>
+            <ion-input type="password" name="password" [(ngModel)]="registerCredentials.password" required>
+            </ion-input>
+            <ion-item>
+              <ion-label stacked-label>Remember Me</ion-label>
+              <ion-checkbox name="rememberMe" [(ngModel)]="rememberMe" color="danger" ></ion-checkbox>
+          </ion-item>
+          </ion-item>
         </ion-col>
       </ion-row>
-      
-      <ion-row class="signup-col">
-        <button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">
-          Login
-        </button>
-        <form class="createAccount">
-          <button ion-button class="register-btn" block clear (click)="createAccount()">
-            No have an account? Register now
+      <ion-row>
+        <ion-col col-12 class="no-padding">
+          <button ion-button class="cta_rouge" full type="submit" [disabled]="!registerForm.form.valid">
+            Valider
           </button>
-        </form>
+        </ion-col>
+        <ion-col col-12>       
+          <a href="#" class="non_abonne_btn" block clear (click)="creerCompte()">
+            Pas encore abonné ?
+          </a> 
+        </ion-col>
       </ion-row>
     </form>
   </div>
-</ion-content>	
+</ion-content>  
+
+

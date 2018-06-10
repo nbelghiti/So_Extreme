@@ -2,58 +2,77 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
-import { SO_extreme } from './app.component';
+import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { MesReservationsPage } from '../pages/mes-reservations/mes-reservations';
+import { AjouteramiPage } from '../pages/ajouterami/ajouterami';
+import { ActivitePage } from '../pages/activite/activite';
 import { LoginPage } from '../pages/login/login';
-import { MapPage } from '../pages/map/map';
-import { UserPage } from '../pages/user/user';
-import { RegisterPage } from '../pages/register/register';
-
-import { Geolocation } from '@ionic-native/geolocation';
+import { ContactPage } from '../pages/contact/contact';
 import { HttpModule  } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { IonicStorageModule } from '@ionic/storage';
 import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { Rest } from '../providers/rest/rest';
 import { AuthService } from '../providers/auth-service/auth-service';
+import { SplashScreen } from '@ionic-native/splash-screen';
 import { SafePipe } from '../pipes/safe/safe';
+import { MonComptePage } from '../pages/mon-compte/mon-compte';
+import { GroupePage } from '../pages/groupe/groupe';
+import { MesPhotosPage } from '../pages/mes-photos/mes-photos';
+import { GroupeIdPage } from '../pages/groupe-id/groupe-id';
+import { CreercomptePage } from '../pages/creercompte/creercompte';
 
+import { GoogleMaps } from '@ionic-native/google-maps';
 
 @NgModule({
   declarations: [
-    SO_extreme,
+    MyApp,
     HomePage,
     ListPage,
+    ContactPage,
     LoginPage,
-    UserPage,
-    MapPage,
-    RegisterPage,
-    SafePipe
+    SafePipe,
+    MesReservationsPage,
+    ActivitePage,
+    MonComptePage,
+    GroupePage,
+    MesPhotosPage,
+    GroupeIdPage,
+    AjouteramiPage,
+    CreercomptePage
   ],
   imports: [
     BrowserModule,
-    HttpModule ,
+    HttpModule,
     HttpClientModule,
-    IonicModule.forRoot(SO_extreme)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    SO_extreme,
+    MyApp,
     HomePage,
     ListPage,
+    ContactPage,
     LoginPage,
-    UserPage,
-    MapPage,
-    RegisterPage
+    MesReservationsPage,
+    ActivitePage,
+    MesPhotosPage,
+    MonComptePage,
+    GroupePage,
+    MesPhotosPage,
+    GroupeIdPage,
+    AjouteramiPage,
+    CreercomptePage
   ],
   providers: [
     StatusBar,
+    AuthService,
     SplashScreen,
-    Geolocation,
+    GoogleMaps,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    Rest,
-    AuthService 
+    
   ]
 })
 export class AppModule {}

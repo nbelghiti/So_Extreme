@@ -1,0 +1,32 @@
+<ion-header >
+  <ion-navbar color="green" >
+    <button ion-button menuToggle>
+      <ion-icon name="menu" ></ion-icon>
+    </button>
+    <ion-title align="center">Mon Compte</ion-title>
+  <ion-buttons end>   
+    <button ion-button (click)="seDeconnecter()">
+      <ion-icon name="log-out"></ion-icon>
+    </button>
+  </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <h2> {{nom}} {{prenom}}</h2><br>
+  <ion-item>
+    <h3> Adresse mail : </h3>
+    <p>{{email}}	</p>
+  </ion-item>	
+  <ion-item>
+    <h3> Telephone 		 : </h3>
+    <p>{{telephone}}</p>
+  </ion-item>
+  <ion-item>
+    <h3>Nombre de reservation :</h3>
+    <p *ngIf="count===0">pas de reservation </p>
+    <p *ngIf="count!==0">{{count}} </p>
+  </ion-item>
+
+</ion-content>

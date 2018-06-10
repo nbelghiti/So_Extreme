@@ -1,0 +1,32 @@
+<ion-header >
+  <ion-navbar color="green" >
+    <button ion-button menuToggle>
+      <ion-icon name="menu" ></ion-icon>
+    </button>
+    <ion-title align="center">Mes Réservations</ion-title>
+  <ion-buttons end>   
+    <button ion-button (click)="seDeconnecter()">
+      <ion-icon name="log-out"></ion-icon>
+    </button>
+  </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-list   *ngFor="let resa of mesReservation">
+    <ion-card (click)="getPageActivite(resa.id_act)">
+      <img src="http://54.36.190.213:4200/assets/img/{{activite[resa.id_act]}}"/>
+      <ion-row>
+
+        <ion-col>
+        <ion-col>
+        <ion-col>
+          <h2>reservé le : {{resa.createdAt | date:'dd:MM:yyyy' }}</h2>
+        </ion-col>
+        </ion-col >
+          <h2 class="titre">date de l'activité :  {{resa.date_rsv | date:'dd:MM:yyyy'}}</h2>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </ion-list>
+
+</ion-content>

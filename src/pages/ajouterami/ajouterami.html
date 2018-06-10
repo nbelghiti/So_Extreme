@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar color="green">
+    <ion-title align="center">ajouterami</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+	<ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+	<ion-list *ngIf="nbre_client!==0">
+			<ion-item  class="delete" *ngFor="let ami of amis1">
+			
+				 <h3>{{ami}}</h3> 
+				 	<ion-badge item-end ion-button (click)="ajouterAmi(ami)">
+				 		<ion-icon name="ios-person-add-outline" ></ion-icon>
+				 	</ion-badge>
+			</ion-item>
+	</ion-list>
+</ion-content>
